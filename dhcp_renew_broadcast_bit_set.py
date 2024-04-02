@@ -1,12 +1,12 @@
 """
-The purpose of this script is to create a DHCP renew packet which will trigger an ACRO session with the conditions to test https://cdetsng.cisco.com/summary/#/defect/CSCwf86893
+The purpose of this script is to create a DHCP renew packet with chaddr != source mac and broadcast bit set
 
 Creates a DHCP request packet which is styled like a renew request
 - Source IP of the packet (src_ip) is the client's IP address (ciaddr)
 - Destination IP of the packet (dst_ip) is the DHCP Server IP address, as the src IP and dst IP are  provided, along with ciaddr, this suggests it is a DHCP Renew
 - Source MAC address of the Ethernet frame (src_mac) should be taken from the adapter
-- Option 61 and CHADDR are set to (vm_mac). Source MAC != chaddr will trigger ACRO if received on an AccessTunnel
-- The BOOTP broadcast flag is set, this along with the above will trigger the Cat9K to add GIADDR per https://cdetsng.cisco.com/summary/#/defect/CSCwf86893
+- Option 61 and CHADDR are set to (vm_mac).
+- The BOOTP broadcast flag is set
 """
 
 import random
